@@ -27,4 +27,4 @@ def gen_response(status, message, content_name=False, content_body=False):
         body[content_name] = content_body
 
     # return json.dumps(body)
-    return Response(json.dumps(body), mimetype="application/json")
+    return Response(json.dumps(body), mimetype="application/json", headers={'Access-Control-Allow-Origin':'*'})
