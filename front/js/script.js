@@ -11,7 +11,6 @@ const api = {
 function CreateAlert(message) {
     alert_message.parentElement.classList.add('active')
     alert_message.innerHTML = `${message}`
-    console.log(`${message}`)
     window.setTimeout(function () { alert_message.parentElement.classList.remove('active') }, 3000);
 }
 
@@ -38,7 +37,7 @@ function ValidateInput(array) {
     let include = array.includes('https://www.youtube.com/playlist?list='); //return True if include in str
     if (include)
         return true
-    CreateAlert(`<i class="fas fa-exclamation-triangle"></i> <strong>Erro!</strong> URL invalida`)
+    CreateAlert(`<i class="fas fa-exclamation-triangle"></i><strong> Erro!</strong> URL invalida`)
 }
 
 async function getSongs(link) {
@@ -50,11 +49,11 @@ async function getSongs(link) {
         response = await loadResponse(param)
     }
     catch (e) {
-        CreateAlert(`<i class="fas fa-exclamation-triangle"></i> <strong>Erro!</strong> ${e}`)
+        CreateAlert(`<i class="fas fa-exclamation-triangle"></i><strong> Erro!</strong> ${e}`)
         console.log(e)
     }
     if (response.status != 200) {
-        CreateAlert(`<i class="fas fa-exclamation-triangle"></i> <strong>Erro!</strong> URL não encontrada`)
+        CreateAlert(`<i class="fas fa-exclamation-triangle"></i><strong> Erro!</strong> URL não encontrada`)
         return
     }
     genList(response.videos)
